@@ -578,6 +578,7 @@ section {
     height: 400px;
     perspective: 1000px;
     cursor: pointer;
+
 }
 
 .card-inner {

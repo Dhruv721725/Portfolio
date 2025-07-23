@@ -620,4 +620,4 @@ const Utils = {
 
 // Export for potential use in other modules
 window.VolcanicPortfolio = VolcanicPortfolio;
-window.PortfolioUtils = Utils;
+// window.PortfolioUtils = Utils;
