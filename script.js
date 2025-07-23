@@ -279,7 +279,7 @@ class VolcanicPortfolio {
         return isValid;
     }
 
-    handleFormSubmission(form) {
+    async handleFormSubmission(form) {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
         
@@ -293,11 +293,21 @@ class VolcanicPortfolio {
             }
         });
         
+        await fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        console.log('Form action is:', form.action);
+
+
         if (!allValid) {
             this.showNotification('Please fix the errors in the form.', 'error');
             return;
         }
-        
         // Simulate form submission (in real app, send to server)
         this.showNotification('Message sent successfully! 🔥', 'success');
         form.reset();
