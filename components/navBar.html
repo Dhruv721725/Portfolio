@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body{
+            background-color: white;
+            color: black;
+        }
+        section{
+            height: 100vh;
+            width: fit-content;
+        }
+        .navbar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.5s ease;
+        }
+        .nav-container{
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        .nav-logo .logo-text{
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: 900;
+            color: purple;
+        }
+        .nav-menu{
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-link{
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            position:relative;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover{
+            color: purple;
+        }
+        .nav-link::after{
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, purple, rgb(170, 0, 170));
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after{
+            width: 100%;
+        }
+
+        .nav-link.active{
+            color: purple;
+        }
+        .nav-link.active::after{
+            width: 100%;
+        }
+
+        .ham-burger{
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+        .ham-burger span{
+            width: 25px;
+            height: 3px;
+            background-color: purple;
+            transition: all 0.3s ease;
+        }
+
+        @media(max-width:768px){
+            .nav-menu{
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color:  rgb(10, 10, 10);
+                transition: left 0.5s ease;
+                z-index: 1000;
+            }
+            .nav-menu.active{
+                left: 0;
+            }
+            .ham-burger{
+                display: flex;
+            }
+            .ham-burger.active span:nth-child(1){
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .ham-burger.active span:nth-child(2){
+                opacity: 0;
+            }
+            .ham-burger.active span:nth-child(3){
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">DG</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="ham-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div style="height: 100px;"></div>
+    
+    <Section id="home">
+        <p>home</p>
+    </Section>
+    <Section id="about">
+        <p>about</p>
+    </Section>
+    <Section id="projects">
+        <p>projects</p>
+    </Section>
+    <Section id="certifications">
+        <p>certifications</p>
+    </Section>
+    <Section id="skills">  
+        <p>skills</p>
+    </Section>
+    <Section id="contact">
+        <p>contact</p>
+    </Section>
+
+    <script>
+        let hamburger = document.querySelectorAll(".ham-burger")[0];
+        let navmenu = document.querySelectorAll(".nav-menu")[0];
+        let navLinks = document.querySelectorAll(".nav-link");
+        hamburger.addEventListener('click',()=>{
+            hamburger.classList.toggle("active");
+            navmenu.classList.toggle("active");
+        })
+
+        navLinks.forEach(navlink=>{
+            navlink.addEventListener('click',()=>{
+                hamburger.classList.remove("active");
+                navmenu.classList.remove("active");
+            })
+        });
+
+        const sections = document.querySelectorAll("section");
+        window.addEventListener('scroll',()=>{
+            let current = "";
+            let scrollPosition = window.pageYOffset+100;
+            sections.forEach(section=>{
+                let top = section.offsetTop;
+                let height = section.offsetHeight;
+
+                if(scrollPosition >= top && scrollPosition<=top+height){
+                    current = section.id;
+                }
+            });
+
+            navLinks.forEach(navlink=>{
+                navlink.classList.remove("active");
+                if(navlink.getAttribute('href')==`#${current}`){
+                    navlink.classList.add('active');
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

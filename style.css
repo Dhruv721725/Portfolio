@@ -1213,6 +1213,7 @@ section {
         justify-content: center;
         align-items: center;
         transition: left var(--transition-medium);
+        z-index: 1000;
     }
     
     .nav-menu.active {

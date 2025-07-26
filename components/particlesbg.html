@@ -27,8 +27,8 @@
         .particle.ember{
             height: 15px;
             width: 15px;
-            background: radial-gradient(circle, var(--accent-orange) 0%, var(--accent-red)100%);
-            box-shadow: 0 0 10px var(--accent-orange);
+            background: radial-gradient(circle,violet 0%, indigo 100%);
+            box-shadow: 0 0 10px rgb(160, 28, 255);
         }
         .particle.ash{
             height: 20px;
@@ -60,7 +60,7 @@
     <!-- Particle system background -->
     <div id="particle-container"></div>
 
-    <script src="./comp.js">
+    <script>
         let particles=[];
         function createParticle(conatiner){
             let particle = document.createElement('div');
@@ -99,7 +99,7 @@
                 createParticle(particleContainer);
             }
         },300);
-        
+
     </script>
 </body>
 </html>
