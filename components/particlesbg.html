@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #particle-container{
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }    
+
+        .particle{
+            position: absolute;
+            top: 100vh;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 8s infinite ease-in-out;
+        }
+        .particle.ember{
+            height: 15px;
+            width: 15px;
+            background: radial-gradient(circle, var(--accent-orange) 0%, var(--accent-red)100%);
+            box-shadow: 0 0 10px var(--accent-orange);
+        }
+        .particle.ash{
+            height: 20px;
+            width: 20px;
+            background: radial-gradient(circle, #666 0%, #333 100%);
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0%,100%{
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0;
+            }
+            10%{
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-100vh) rotate(180deg);
+                opacity: 0.8;
+            }
+            90%{
+                opacity: 0.3;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Particle system background -->
+    <div id="particle-container"></div>
+
+    <script src="./comp.js">
+        let particles=[];
+        function createParticle(conatiner){
+            let particle = document.createElement('div');
+            particle.className= Math.random()>0.7? "particle ember": "particle ash";
+
+            // random size
+            const size = Math.random()*8+2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+
+            // random starting point
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+
+            // random animation duration
+            let duration  = Math.random()*10 + 8;
+            particle.style.animationDuration = duration + 's';
+        
+            // drift property
+            conatiner.appendChild(particle);
+            particles.push(particle);
+        
+            // removing particle after its completion
+            setTimeout(()=>{
+                particle.parentNode.removeChild(particle);
+                particles = particles.filter(p=>p!==particle);
+                console.log(particles);        
+            },duration*1000);
+        }
+
+        const particleContainer = document.getElementById("particle-container")  
+        for (let i = 0; i < 50; i++) {
+            createParticle(particleContainer);    
+        }
+        setInterval(()=>{
+            if (particles.length<100) {
+                createParticle(particleContainer);
+            }
+        },300);
+        
+    </script>
+</body>
+</html>
