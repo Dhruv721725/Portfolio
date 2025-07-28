@@ -9,19 +9,22 @@
         .main{
             height: 100vh;
             width: 100%;
-            background: radial-gradient(rgba(128, 0, 128, 0.4), rgb(20, 20, 20));
             display: flex;
             align-items: center;
             justify-content: center;
+            animation: glow 3s ease-in 0s infinite alternate;
+            animation-timing-function:ease-in-out;
+            perspective: 300px;
         }
         #item{
             height: 200px;
             width: 300px;
-            background-color: rgba(20, 20, 20, 0.9);
+            background-color: rgba(25, 25, 25, 0.9);
             clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
             display: flex;
             position: relative;
             justify-content: center;
+            transform-style: preserve-3d;
         }
         #crater{
             height: 15%;
@@ -40,6 +43,13 @@
             background-color: blueviolet;
             box-shadow: 0 0 20px purple;    
         }
+        @keyframes glow {
+            0%{background: radial-gradient(circle closest-side at center,rgba(128, 0, 128, 0.3) , rgb(10, 10, 10));}
+            25%{background: radial-gradient(circle closest-side at center,rgba(128, 0, 128, 0.35), rgb(10, 10, 10));}
+            50%{background: radial-gradient(circle closest-side at center,rgba(128, 0, 128, 0.4), rgb(10, 10, 10));}
+            75%{background: radial-gradient(circle closest-side at center,rgba(128, 0, 128, 0.45), rgb(10, 10, 10));}
+            100%{background: radial-gradient(circle closest-side at center,rgba(128, 0, 128, 0.3) , rgb(10, 10, 10));}
+        }
     </style>
 </head>
 <body>
@@ -49,10 +59,16 @@
             <div id="bar"></div>
         </div>
     </div>
-    
-
     <script>
-
+        let mouseX = 0;
+        let mouseY = 0;
+        document.addEventListener('mousemove',(e)=>{
+            let item = document.querySelector("#item");
+            mouseX = (e.clientX/window.innerWidth)*2-1;
+            mouseY = (e.clientY/window.innerHeight)*2-1;
+            console.log(mouseX+", "+mouseY);
+            item.style.transform = `rotateY(${mouseX*10}deg) rotateX(${mouseY*10}deg)`
+        });
     </script>
 </body>
 </html>
