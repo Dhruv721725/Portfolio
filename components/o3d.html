@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .main{
+            height: 100vh;
+            width: 100%;
+            background: radial-gradient(rgba(128, 0, 128, 0.4), rgb(20, 20, 20));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #item{
+            height: 200px;
+            width: 300px;
+            background-color: rgba(20, 20, 20, 0.9);
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+            display: flex;
+            position: relative;
+            justify-content: center;
+        }
+        #crater{
+            height: 15%;
+            width: 30%;
+            position: absolute;
+            top: 0;
+            border-radius: 20px 20px 0 0;
+            background-color: blueviolet;
+            box-shadow: 0 0 20px purple;
+        }
+        #bar{
+            position: absolute;
+            bottom: 0;
+            height: 40%;
+            width:20%;
+            background-color: blueviolet;
+            box-shadow: 0 0 20px purple;    
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div id="item">
+            <div id="crater"></div>
+            <div id="bar"></div>
+        </div>
+    </div>
+    
+
+    <script>
+
+    </script>
+</body>
+</html>
