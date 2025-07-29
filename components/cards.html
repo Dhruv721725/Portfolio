@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .main{
+            background-color:rgb(10,10,10);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        #tile{
+            height: 200px;
+            width: 98%;
+            border-radius: 20px;
+            background-color: rgba(20, 20, 20, 0.95);
+            border-left: 5px solid purple;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            transition: all 0.5s ease-in-out;
+
+        }
+        #tile h3{
+            color: purple;
+        }
+        .tile-box{
+            position: relative;
+        }
+        #tile:hover{
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(128, 0, 128, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        
+        <div class="tile-box">
+            <div id="tile">
+                <h3>Card1</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam eos doloremque eius quam quod odit. Cum nisi quaerat quo praesentium neque eligendi reprehenderit et doloremque. Ratione quam facere molestias laboriosam!
+                </p>
+            </div>
+        </div>
+    
+    </div>
+    
+</body>
+</html>
