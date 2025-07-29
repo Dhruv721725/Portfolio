@@ -8,12 +8,14 @@
     <style>
         .main{
             background-color:rgb(10,10,10);
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
             justify-content: center;
             align-items: center;
             padding: 20px;
         }
-        #tile{
+        .tile{
             height: 200px;
             width: 98%;
             border-radius: 20px;
@@ -26,26 +28,92 @@
             transition: all 0.5s ease-in-out;
 
         }
-        #tile h3{
+        .tile h3{
             color: purple;
         }
         .tile-box{
             position: relative;
         }
-        #tile:hover{
+        .tile::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, transparent , rgba(128, 0, 128, 0.3));
+            transition: all 0.5s ease-in-out;
+            border-radius: 20px;
+            z-index: 1;
+        }
+        .tile:hover{
             transform: translateX(10px);
             box-shadow: 0 10px 30px rgba(128, 0, 128, 0.7);
+        }
+        .tile:hover::before{
+            width: 100%;
+        }
+
+        .glasstile{
+            height: 150px;
+            width: 98%;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            background-color: rgba(20, 20, 20, 0.95);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .glasstile h2{
+            color: purple;
+        }
+        .glasstile::before{
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(128, 0, 128, 0.3));
+            transform: rotate(-45deg);
+            opacity: 0;
+        }
+        .glasstile:hover{
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px purple;
+        }
+        .glasstile:hover::before{
+            opacity: 1;
+            animation: shimer 1.2s ease-in-out;
+        }
+        @keyframes shimer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(-45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(-45deg);
+            }
         }
     </style>
 </head>
 <body>
     <div class="main">
-        
         <div class="tile-box">
-            <div id="tile">
+            <div class="tile">
                 <h3>Card1</h3>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam eos doloremque eius quam quod odit. Cum nisi quaerat quo praesentium neque eligendi reprehenderit et doloremque. Ratione quam facere molestias laboriosam!
                 </p>
+            </div>
+        </div>
+
+        <div class="tile-box">
+            <div class="glasstile">
+                <h2>!Hi</h2>
+                <p class="title">Lorem, ipsum.</p>
             </div>
         </div>
     
