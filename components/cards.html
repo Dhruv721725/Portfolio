@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .main{
             background-color:rgb(10,10,10);
@@ -98,9 +100,39 @@
                 transform: translateX(100%) translateY(100%) rotate(-45deg);
             }
         }
+
+        .card3d{
+            height: 400px;
+            width: 98%;
+            background-color: rgba(20, 20, 20, 0.95);
+            border-radius: 20px;
+        }
+        .card3d .front{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 2rem;
+            gap: 2rem;
+            overflow: hidden;
+        }
+        .card3d i{
+            font-size: 70px;
+            color: purple;
+            animation: float 3s ease 0s infinite alternate;
+        }
+        .card3d .icon{
+            padding: 2rem;
+        }
+        @keyframes float {
+            0%{transform: translateY(-10px);}
+            100%{transform: translateY(10px);}
+        }
+
     </style>
 </head>
 <body>
+<!-- Card 1 -->
     <div class="main">
         <div class="tile-box">
             <div class="tile">
@@ -110,13 +142,43 @@
             </div>
         </div>
 
+<!-- Card 2 -->
         <div class="tile-box">
             <div class="glasstile">
-                <h2>!Hi</h2>
+                <h2>Card2</h2>
                 <p class="title">Lorem, ipsum.</p>
             </div>
         </div>
-    
+
+<!-- Card 3 -->
+        <div class="tile-box">
+            <div class="card3d">
+                <div class="front">
+                    <div class="icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <h2>Card 3</h2>
+                    <p>Lorem ipsum dolor sit amet consent</p>
+                    <ul>
+                        <li>Lorem</li>
+                        <li>Lorem</li>
+                        <li>Lorem</li>
+                    </ul>
+                </div>
+
+                <div class="back">
+                    <h3>Card 3</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates ex tenetur perferendis aliquid iste sed!</p>
+                    <ul>
+                        <li>Lorem, ipsum dolor.</li>
+                        <li>Lorem, ipsum dolor.</li>
+                        <li>Lorem, ipsum dolor.</li>
+                        <li>Lorem, ipsum dolor.</li>
+                    </ul>
+                    <b>30th July 2024</b>
+                </div>
+            </div>
+        </div>
     </div>
     
 </body>
