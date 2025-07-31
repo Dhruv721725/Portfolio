@@ -170,6 +170,53 @@
             .main {grid-template-columns: 1fr 1fr;}
         }
 
+        .progress-card{
+            height: 400px;
+            width: 98%;
+            background: rgba(20, 20, 20, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            border-top: 4px solid purple;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items:center; 
+        }
+        .progress-card ul{
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+        }
+        .progress-card i{
+            font-size: 40px;
+        }
+        .progress-card .progress-bar{
+            height: 12px;
+            width: 90%;
+            background-color: rgb(10,10,10);
+            border-radius: 20px;
+            position: relative; 
+        }
+        .progress-card .progress{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            border-radius: 20px;
+            background: linear-gradient(90deg, purple, rgba(128, 0, 128, 0.7));
+            z-index: 1;
+        }
+        .progress-card #python .progress{
+            width: 80%;
+        } 
+        .progress-card #java .progress{
+            width: 90%;
+        } 
+        .progress-card #js .progress{
+            width: 85%;
+        } 
     </style>
 </head>
 <body>
@@ -222,6 +269,36 @@
                     </div>
 
                 </div>
+            </div>
+        </div>
+
+<!-- Card 4 -->
+        <div class="tile-box">
+            <div class="progress-card">
+                <h2>Programming Skills</h2>
+                <ul>
+                    <li id="python">
+                        <i class="fab fa-python"></i>
+                        <p class="title">Python</p>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                    </li>
+                    <li id="java">
+                        <i class="fab fa-java"></i>
+                        <p class="title">JAVA</p>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                    </li>
+                    <li id="js">
+                        <i class="fab fa-js"></i>
+                        <p class="title">JAVA Script</p>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
 
