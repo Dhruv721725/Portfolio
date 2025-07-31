@@ -110,23 +110,31 @@
         .card3d .inner-card{
             transition: all 1s ease;
             position: relative;
+            height: 100%;
+            width: 100%;
         }
         .card3d:hover .inner-card{
             transform: rotateY(180deg);
         }
 
-        .card3d .back, .card3d .front{
+        .card3d .back, .front{
             display: flex;
             flex-direction: column;
             justify-content: space-around;
             backface-visibility: hidden;
             background-color: rgba(20, 20, 20, 0.95);
             border-radius: 20px;
-            
+            height: 100%;
+            width: 100%;
         }
+
         .card3d .back{
+            position: absolute;
+            top: 0;
+            left: 0;
             transform: rotateY(180deg);
         }
+        
 
 
         @keyframes float {
