@@ -15,7 +15,7 @@
             gap: 2rem;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 20px
         }
         .tile{
             height: 200px;
@@ -35,7 +35,7 @@
         }
         .tile-box{
             position: relative;
-            perspective: 600px;
+            perspective: 1000px;
         }
         .tile::before{
             content: "";
@@ -104,69 +104,38 @@
 
         .card3d{
             height: 400px;
-            width: 98%;
-            background-color: rgba(20, 20, 20, 0.95);
-            border-radius: 20px;
-            transform-style: preserve-3d;
-            transition:all 1s ease;
+            perspective: 1000px;
+            cursor: pointer;
         }
-        .card3d .front{
+        .card3d .inner-card{
+            transition: all 1s ease;
+            position: relative;
+        }
+        .card3d:hover .inner-card{
+            transform: rotateY(180deg);
+        }
+
+        .card3d .back, .card3d .front{
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            align-items: center;
-            padding: 2rem;
-            gap: 2rem;
-            overflow: hidden;
             backface-visibility: hidden;
-        }
-        .card3d i{
-            font-size: 70px;
-            color: purple;
-            animation: float 3s ease 0s infinite alternate;
-        }
-        .card3d .icon{
-            padding: 2rem;
-        }
-        .card3d h2{
-            color: purple;
-        }
-        .card3d ul{
-            display: flex;
-            justify-content: space-around;
-            list-style-type: none;
-        }
-        .card3d .features{
-            margin: 1rem;
-            background: linear-gradient(90deg, purple,rgba(128, 0 ,128, 0.7)); 
-            padding: 0.5rem 1rem 0.5rem 1rem;
-            border-radius: 2rem;           
+            background-color: rgba(20, 20, 20, 0.95);
+            border-radius: 20px;
+            
         }
         .card3d .back{
             transform: rotateY(180deg);
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            left: 0;
-            top: 0;
-            backface-visibility: hidden;
-            padding: 2rem;
-            gap: 2rem;
-        } 
-        .card3d .back ul{
-            flex-direction: column;
-            list-style-type: '🔮';
-            gap: 0.5rem;
         }
-        .card3d b{
-            color: purple;
-        }
-        .card3d:hover{
-            transform: rotateY(180deg);
-        }
+
+
         @keyframes float {
             0%{transform: translateY(-10px);}
             100%{transform: translateY(10px);}
+        }
+
+        @media (min-width:768px) {
+            .main {grid-template-columns: 1fr 1fr;}
         }
 
     </style>
@@ -193,39 +162,59 @@
 <!-- Card 3 -->
         <div class="tile-box">
             <div class="card3d">
-                <div class="front">
-                    <div class="icon">
-                        <i class="fas fa-list"></i>
+                <div class="inner-card">
+                    
+                    <div class="front">
+                        <div class="icon">
+                            <i class="fas fa-list"></i>
+                        </div>
+                        <h2>Card 3</h2>
+                        <p>Lorem ipsum dolor sit amet consent</p>
+                        <ul>
+                            <li class="features">Lorem</li>
+                            <li class="features">Lorem</li>
+                            <li class="features">Lorem</li>
+                        </ul>
                     </div>
-                    <h2>Card 3</h2>
-                    <p>Lorem ipsum dolor sit amet consent</p>
-                    <ul>
-                        <li class="features">Lorem</li>
-                        <li class="features">Lorem</li>
-                        <li class="features">Lorem</li>
-                    </ul>
-                </div>
 
-                <div class="back">
-                    <h2>Card 3</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates ex tenetur perferendis aliquid iste sed!</p>
-                    <ul>
-                        <li>Lorem, ipsum dolor.</li>
-                        <li>Lorem, ipsum dolor.</li>
-                        <li>Lorem, ipsum dolor.</li>
-                        <li>Lorem, ipsum dolor.</li>
-                    </ul>
-                    <b>30th July 2024</b>
+                    <div class="back">
+                        <h2>Card 3</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates ex tenetur perferendis aliquid iste sed!</p>
+                        <ul>
+                            <li>Lorem, ipsum dolor.</li>
+                            <li>Lorem, ipsum dolor.</li>
+                            <li>Lorem, ipsum dolor.</li>
+                            <li>Lorem, ipsum dolor.</li>
+                        </ul>
+                        <b>30th July 2024</b>
+                    </div>
+
                 </div>
             </div>
         </div>
+
     </div>
+
     <script>
-        let crd3d = document.querySelectorAll(".card3d")[0];
-        crd3d.addEventListener('mouseover',()=>{
-            let rect = crd3d.getClientRects();
-            console.log(rect[0].x+", "+rect[0].y);
+        let cards = document.querySelectorAll(".card3d");
+        cards.forEach(card=>{
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+            });
             
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
         });
     </script>
 </body>
