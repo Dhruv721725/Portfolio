@@ -112,11 +112,11 @@
             position: relative;
             height: 100%;
             width: 100%;
+            transform-style: preserve-3d;
         }
         .card3d:hover .inner-card{
             transform: rotateY(180deg);
         }
-
         .card3d .back, .front{
             display: flex;
             flex-direction: column;
@@ -126,17 +126,41 @@
             border-radius: 20px;
             height: 100%;
             width: 100%;
+            align-items: center;
+            padding: 2rem;
         }
-
         .card3d .back{
+            align-items: start;
             position: absolute;
             top: 0;
             left: 0;
             transform: rotateY(180deg);
         }
+        .card3d h2,b,i{
+            color: purple;
+        }
+        .card3d i{
+            font-size: 60px;
+            animation: float 3s ease-in-out 0s infinite alternate;
+        }
+        .card3d ul{
+            display: flex;
+            list-style-type: none;
+            width: 70%;
+            justify-content: space-around;
+        }
+        .card3d .front li{
+            background: linear-gradient(90deg, purple, rgba(128,0,128,0.6));
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        .card3d .back ul{
+            flex-direction: column;
+        }
+        .card3d .back li::before{
+            content: "🎓 ";
+        }
         
-
-
         @keyframes float {
             0%{transform: translateY(-10px);}
             100%{transform: translateY(10px);}
