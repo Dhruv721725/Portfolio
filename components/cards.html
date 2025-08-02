@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .main{
-            background-color:rgb(10,10,10);
+            background-color:rgb(15,15,15);
             display: grid;
             grid-template-columns: 1fr;
             gap: 2rem;
@@ -17,6 +17,7 @@
             align-items: center;
             padding: 20px
         }
+/* hover tile */
         .tile{
             height: 200px;
             width: 98%;
@@ -56,7 +57,7 @@
         .tile:hover::before{
             width: 100%;
         }
-
+/*Glass tile*/
         .glasstile{
             height: 150px;
             width: 98%;
@@ -101,7 +102,7 @@
                 transform: translateX(100%) translateY(100%) rotate(-45deg);
             }
         }
-
+/* 3d card */
         .card3d{
             height: 400px;
             perspective: 1000px;
@@ -169,7 +170,7 @@
         @media (min-width:768px) {
             .main {grid-template-columns: 1fr 1fr;}
         }
-
+/*progress card*/
         .progress-card{
             height: 350px;
             width: 98%;
@@ -244,6 +245,181 @@
             }
             100%{
                 transform: translateX(100%);
+            }
+        }
+/*Skills card*/
+        .skills{
+            padding: 2rem;
+            background-color: rgba(20, 20, 20, 0.95);
+            border-top: 4px solid purple;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        .skills h2{
+            color: purple;
+        }
+        .skills ul{
+            list-style-type: none;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        .skills .items{
+            display: flex;
+            padding: 1rem;
+            gap: 20px;
+            background-color: rgba(14, 14, 14, 0.95);
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+            align-items: center;
+            width: 96%;
+        }
+        .skills .items i{
+            font-size: 25px;
+            color: purple;
+        }
+        .skills .items:hover{
+            background-color: rgba(10, 10, 10, 0.95);
+            box-shadow: 0 5px 30px purple;
+            transform: translateY(-5px);
+        }
+
+        @media (min-width:768px) {
+            .skills ul{
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+/*Certificates card*/
+        .timeline{
+            position: relative;
+        }
+        .timeline h2{
+            color: purple;
+            font-size: 40px;
+            font-family:'Orbitron', monospace;
+            text-align: center;
+            position: relative;
+        }
+        .timeline h2::after{
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -15px;
+            background-color: purple;
+            height: 4px;
+            width: 100px;
+        }
+        .timeline-items{
+            position: relative;
+            margin-top: 40px;
+        }
+        .timeline-items::before{
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top:0;
+            height: 100%;
+            width: 6px;
+            background: linear-gradient(purple,rgb(128,0,150));
+            border-radius:5px;
+        }
+        .timeline-item{
+            background-color: rgba(20, 20, 20, 0.95);
+            border-radius: 20px;
+            width: 30%;
+            padding: 1.5rem;
+            position: relative;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.5s ease-in-out;
+        }
+        .timeline-item:nth-child(odd){
+            left: 15%;
+        }
+        .timeline-item:nth-child(even){
+            left: 55%;
+        }
+        .timeline-item:hover{
+            border:1px solid purple;
+            box-shadow: 0 0 30px rgba(128, 0, 128, 0.5);
+            transform: translateY(-5px);
+        }
+        .timeline-item i{
+            position: absolute;
+            right: 10%;
+            top: 0;
+            transform: translateY(-50%);
+            background-color: purple;
+            color: white;
+            padding: 0.75rem;
+            border-radius: 50%;
+            animation: iconGlow 2s ease-in-out infinite alternate;
+        }   
+        @keyframes iconGlow {
+            0%{
+                box-shadow: 0 0 0 0 rgba(128, 0, 128, 0.4);
+                font-size: 16px;
+            }
+            100%{
+                box-shadow: 0 0 0 10px rgba(128, 0, 128, 0.4);
+                font-size: 18px;
+            }
+        }
+        .timeline-item .date{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(90deg, purple,rgb(128,0,170));
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        .timeline-item:nth-child(odd) .date{
+            right: -7rem;
+        }
+        .timeline-item:nth-child(even) .date{
+            left: -7rem;
+        }
+        .arrow{
+            height: 30px;
+            width: 30px;
+            background-color: rgb(20, 20, 20);
+            position: absolute;
+            top: 50%;
+        }
+        .timeline-item:nth-child(odd) .arrow{
+            right: 0;
+            transform: translateY(-50%) translateX(50%) rotateZ(45deg);
+        }
+        .timeline-item:nth-child(even) .arrow{
+            left: 0;
+            transform: translateY(-50%) translateX(-50%) rotateZ(45deg);
+        }
+
+        @media (max-width:768px) {
+            .timeline-items::before{
+                left: 10%;
+            }
+            .timeline-item:nth-child(odd){
+                left: 25%;
+                width: 70%;
+            }
+            .timeline-item:nth-child(even){
+                left: 25%;
+                width: 70%;
+            }
+            .timeline-item:nth-child(odd) .date{
+                left: -7rem;
+                right: auto;
+            }
+            .timeline-item:nth-child(odd) .arrow{
+                left: 0;
+                transform: translateX(-50%) translateY(-50%) rotateZ(45deg);
             }
         }
     </style>
@@ -336,9 +512,83 @@
                 </ul>
             </div>
         </div>
-
+<!-- Card 5 -->
+        <div class="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li class="items">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <p>Lorem ipsum</p>
+                </li>
+                <li class="items">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <p>Lorem ipsum</p>
+                </li>
+                <li class="items">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <p>Lorem ipsum</p>
+                </li>
+                <li class="items">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <p>Lorem ipsum</p>
+                </li>
+                <li class="items">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <p>Lorem ipsum</p>
+                </li>
+            </ul>
+        </div>
     </div>
 
+            
+<!-- Card 6 -->
+    <section class="timeline">
+        <h2>Certifications & Achievements</h2>
+        <div class="timeline-items">
+            <div class="timeline-item">
+                <div class="arrow"></div>
+                <div class="date">Aug 2025</div>
+                <h3>Lorem, ipsum dolor.</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, excepturi.</p>
+                <i class= "fas fa-certificate"></i>
+            </div>
+            <div class="timeline-item">
+                <div class="arrow"></div>
+                <div class="date">Aug 2025</div>
+                <h3>Lorem, ipsum dolor.</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, excepturi.</p>
+                <i class= "fas fa-certificate"></i>
+            </div>
+            <div class="timeline-item">
+                <div class="arrow"></div>
+                <div class="date">Aug 2025</div>
+                <h3>Lorem, ipsum dolor.</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, excepturi.</p>
+                <i class= "fas fa-certificate"></i>
+            </div>
+            <div class="timeline-item">
+                <div class="arrow"></div>
+                <div class="date">Aug 2025</div>
+                <h3>Lorem, ipsum dolor.</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, excepturi.</p>
+                <i class= "fas fa-certificate"></i>
+            </div>
+            <div class="timeline-item">
+                <div class="arrow"></div>
+                <div class="date">Aug 2025</div>
+                <h3>Lorem, ipsum dolor.</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, excepturi.</p>
+                <i class= "fas fa-certificate"></i>
+            </div>
+            <div class="timeline-item">
+                <div class="arrow"></div>
+                <div class="date">Aug 2025</div>
+                <h3>Lorem, ipsum dolor.</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, excepturi.</p>
+                <i class= "fas fa-certificate"></i>
+            </div>
+        </div>
+    </section>
     <script>
         let cards = document.querySelectorAll(".card3d");
         cards.forEach(card=>{
