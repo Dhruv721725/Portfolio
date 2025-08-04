@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Connect</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            color: white;
+            font-family: monospace;
+        }
+        .main{
+            background-color: rgb(15, 15, 15);
+            gap: 2rem;
+            padding: 2rem;
+            font-family: 'Rajdhani';
+        }
+        .main h2{
+            color: purple;
+            font-size: 40px;
+            text-align: center;
+            font-family: 'orbitron', monospace;
+            position: relative;
+        }
+        .main h2::before{
+            content: '';
+            height: 4px;
+            width: 100px;
+            background-color: purple;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+        }
+        .contact-cards{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2rem;
+            padding: 4rem 2rem;
+        }
+        .contact-card{
+            background-color: rgb(20, 20, 20);
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            display: flex;
+            gap: 1rem;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+        }
+        .contact-card i{
+            background-color: purple;
+            padding: 0.75rem;
+            border-radius: 50%;
+            font-size: 20px;
+        }
+        .contact-card h3{
+            color: purple;
+        }
+        .contact-card .content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;   
+        }
+        .contact-card::before{
+            content: '';
+            height: 100%;
+            width: 0;
+            border-radius: 20px;
+            background: linear-gradient(90deg, transparent, rgba(128, 0, 128, 0.3));
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all 0.3s ease-in-out;
+        }
+        .contact-card:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 3px 7px 5px rgba(128, 0, 128, 0.7);
+        }
+        .contact-card:hover::before{
+            width: 100%;
+        }
+
+        .contact-form{
+            background-color: rgb(20, 20, 20);
+            padding: 2rem;
+            border-radius: 20px;
+            border-top: 4px solid purple;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .contact-form .inp,.btn{
+            background-color: rgb(15, 15, 15);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 2px solid black;
+            width: 90%;
+            align-self: center;
+        }
+        .form-group{
+            position: relative;
+        }
+        label{
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            color: rgb(200, 200, 200);
+        }
+        .inp:focus, .inp:valid{
+            outline: none;
+            border: 2px solid purple;
+        }
+        .inp:focus+label, .inp:valid+label{
+            top: 0;
+            transform: translateY(-50%);
+            left: 0.5rem;
+            background-color: rgb(15, 15, 15);
+            border-radius: 10px;
+            font-size: 0.8rem;
+            padding: 0.2rem 0.5rem;
+        }
+        .btn{
+            background: linear-gradient(90deg,rgb(170,0,128), purple, rgb(128, 0, 170));
+            border-radius: 20px !important;
+            padding: 1rem;
+            border: none !important;
+            font-weight: 700;
+            box-shadow: 0 0 5px 2px rgba(128, 0, 128, 0.4);
+        }
+        .contact-grid{
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin: 2rem;
+        }
+        @media (min-width:768px) {
+            .contact-grid{
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+            }
+        }
+        .notifier{
+            position:fixed;
+            top: 2rem;
+            right: -100%;
+            padding: 1rem;
+            border-radius: 10px;
+            font-family: Rajdhani, sans-serif;
+            font-weight: 600;
+            transition: all 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h2>Let's Connect</h2>
+        <div class="contact-grid">
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div class="content">
+                        <h3>Email</h3>
+                        <p>dhruv721725@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <i class="fa-solid fa-phone"></i>
+                    <div class="content">
+                        <h3>Contact</h3>
+                        <p>+91 721725 7474</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div class="content">
+                        <h3>Address</h3>
+                        <p>A/128 New Shanti Nagar, Mathura (281001)</p>
+                    </div>
+                </div>
+            </div>
+            <form action="https://formspree.io/f/xwpqlwld" method="POST" class="contact-form">
+                <div class="form-group">
+                    <input type="text" name="name" class="inp" id="name" required>
+                    <label for="name">Your name</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="inp" id="email" required>
+                    <label for="email">Your email</label>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="subject" class="inp" id="subject" required>
+                    <label for="subject">Subject</label>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" rows="7" class="inp" id="message" required autocomplete="true"></textarea>
+                    <label for="message">Message</label>
+                </div>
+                <button type="submit" class="btn">
+                    Send message
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <section class="notifier">
+        Notification alert! 🎉
+    </section>
+    
+    <script>
+        let form = document.querySelectorAll('.contact-form')[0];
+        //form.style.backgroundColor="red";
+        form.addEventListener("submit",(e)=>{
+            e.preventDefault();
+            handleFormSubmission(form);
+        });
+
+        async function handleFormSubmission(form){
+            let formData = new FormData(form);
+            let data = Object.fromEntries(formData);
+            console.log(data);
+            try {
+                await fetch(form.action,{
+                    method: form.method,
+                    body: new FormData(form),
+                    headers: {
+                        'Accept':'application/json'
+                    }
+                }) 
+                showNotification("success","Message sent successfully!🎉");
+            }catch(error){
+                showNotification("rejected","An error occured!⚠️");
+            }
+        }
+        function showNotification(status,message){
+            let ntfr = document.querySelectorAll(".notifier")[0];
+            ntfr.style.background = status === "success"
+                ? 'linear-gradient(45deg, #28a745, #20c997)' 
+                : 'linear-gradient(45deg, #dc3545, #fd7e14)';
+            ntfr.style.right = '2rem';
+            ntfr.innerText = message;
+            setTimeout(()=>{
+                ntfr.style.right = '-100%';
+            },5000);
+        }
+    </script>
+</body>
+</html>
